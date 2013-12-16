@@ -50,7 +50,7 @@
 
         /*  parse still to be done format string  */
         var m;
-        while ((m = /^([^%]*)%(\d+$)?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFcs])(.*)$/.exec(todo))) {
+        while ((m = /^([^%]*)%(\d+\$)?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFcs])(.*)$/.exec(todo))) {
             var pProlog    = m[1],
                 pAccess    = m[2],
                 pFlags     = m[3],
