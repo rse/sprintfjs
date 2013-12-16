@@ -30,13 +30,21 @@ module.exports = function (grunt) {
                 jshintrc: "jshint.json"
             },
             gruntfile:   [ "Gruntfile.js" ],
-            sourcefiles: [ "sprintf.js" ]
+            sourcefiles: [ "sprintf.js", "sprintf.test.js" ]
         },
         eslint: {
             options: {
                 config: "eslint.json"
             },
-            target: [ "sprintf.js" ],
+            target: [ "sprintf.js", "sprintf.test.js" ],
+        },
+        mochaTest: {
+            "sprintf": {
+                src: [ "sprintf.test.js" ]
+            },
+            options: {
+                reporter: "spec"
+            }
         },
         uglify: {
             options: {
@@ -58,7 +66,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-eslint");
+    grunt.loadNpmTasks("grunt-mocha-test");
 
-    grunt.registerTask("default", [ "jshint", "eslint", "uglify" ]);
+    grunt.registerTask("default", [ "jshint", "eslint", "mochaTest", "uglify" ]);
 };
 
