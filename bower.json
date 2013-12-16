@@ -9,7 +9,7 @@
         "Ralf S. Engelschall <rse@engelschall.com>"
     ],
     "keywords": [
-        "sprintf", "vsprintf", "string", "format"
+        "sprintf", "string", "format"
     ],
     "dependencies": {
     },

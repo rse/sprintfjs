@@ -10,7 +10,7 @@
         "url":     "http://engelschall.com"
     },
     "keywords": [
-        "sprintf", "vsprintf", "string", "format"
+        "sprintf", "string", "format"
     ],
     "repository": {
         "type": "git",
