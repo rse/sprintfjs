@@ -1,6 +1,8 @@
 
-sprintf.js -- POSIX sprintf(3)-style String Formatting for JavaScript
-=====================================================================
+sprintf.js
+==========
+
+*POSIX sprintf(3)-style String Formatting for JavaScript*
 
 <p/>
 <img src="https://nodei.co/npm/sprintfjs.png?downloads=true&stars=true" alt=""/>
