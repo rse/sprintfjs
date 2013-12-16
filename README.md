@@ -42,17 +42,6 @@ exposed API method is (in TypeScript definition notation):
 
     sprintf(fmt: String, ...arg: any[]): String;
 
-The supported sprintf(3) features are:
-
-- 
-
-Examples
---------
-
-```js
-sprintf("%-05d", 42)
-```
-
 See Also
 --------
 
