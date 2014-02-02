@@ -174,7 +174,7 @@
                             else {
                                 subst = (Math.round(subst * Math.pow(10, precision)) / Math.pow(10, precision));
                                 subst += "0000000000";
-                                subst = subst.substr(0, subst.indexOf(".")+precision+1);
+                                subst = subst.substr(0, subst.indexOf(".") + precision + 1);
                             }
                         }
                         subst = "" + subst;
