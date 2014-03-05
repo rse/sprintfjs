@@ -50,7 +50,7 @@
 
         /*  parse still to be done format string  */
         var m;
-        while ((m = /^([^%]*)%(\d+\$)?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFcs])(.*)$/.exec(todo))) {
+        while ((m = /^([^%]*)%(\d+\$)?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFeEcs])(.*)$/.exec(todo))) {
             var pProlog    = m[1],
                 pAccess    = m[2],
                 pFlags     = m[3],
@@ -185,6 +185,22 @@
                                 k = (k + 1) % 2;
                             }
                         }
+                        break;
+                    case "e":
+                    case "E":
+                        subst = arguments[access];
+                        if (typeof subst !== "number")
+                            subst = 0.0;
+                        subst = 0.0 + subst;
+                        if (precision > -1) {
+                            if (subst.toExponential)
+                                subst = subst.toExponential(precision);
+                            else
+                                throw new Error("sprintf: ERROR: toExponential() method not supported");
+                        }
+                        subst = "" + subst;
+                        if (pType === "E")
+                            subst = subst.replace(/e\+/, "E+");
                         break;
                     case "c":
                         subst = arguments[access];
