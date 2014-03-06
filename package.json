@@ -19,7 +19,7 @@
     "bugs": {
         "url":  "http://github.com/rse/sprintfjs/issues"
     },
-    "main": "./sprintfjs.js",
+    "main": "./sprintf.js",
     "devDependencies": {
         "grunt":                "~0.4.2",
         "grunt-cli":            "~0.1.13",
