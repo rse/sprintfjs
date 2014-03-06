@@ -68,7 +68,8 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
 
         /*  complex tests for various features  */
         [ "%s-%d-%.2f", [ "foo", 42, 7.1 ], "foo-42-7.10" ],
-        [ "%2$s baz %3$s baz %1$s", [ "foo", "bar", "quux" ], "bar baz quux baz foo" ]
+        [ "%2$s baz %3$s baz %1$s", [ "foo", "bar", "quux" ], "bar baz quux baz foo" ],
+        [ "%(bar)s baz %(quux)s baz %(foo)s", { foo: "foo", bar: "bar", quux: "quux" }, "bar baz quux baz foo" ]
     ];
 
     /*  the corresponding generic test driver  */

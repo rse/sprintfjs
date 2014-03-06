@@ -50,14 +50,15 @@
 
         /*  parse still to be done format string  */
         var m;
-        while ((m = /^([^%]*)%(\d+\$)?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFeEcs])(.*)$/.exec(todo))) {
+        while ((m = /^([^%]*)%(?:(\d+)\$|\(([^\)]+)\))?([#0 +'-]+)?(\*|\d+)?(\.\*|\.\d+)?([%diouxXfFeEcs])(.*)$/.exec(todo))) {
             var pProlog    = m[1],
-                pAccess    = m[2],
-                pFlags     = m[3],
-                pMinLength = m[4],
-                pPrecision = m[5],
-                pType      = m[6],
-                pEpilog    = m[7];
+                pAccessD   = m[2],
+                pAccessN   = m[3],
+                pFlags     = m[4],
+                pMinLength = m[5],
+                pPrecision = m[6],
+                pType      = m[7],
+                pEpilog    = m[8];
 
             /*  determine substitution  */
             var subst;
@@ -108,17 +109,30 @@
 
                 /*  determine how to fetch argument  */
                 access = argumentnum++;
-                if (pAccess)
-                    access = parseInt(pAccess.substring(0, pAccess.length - 1), 10);
-                if (access >= arguments.length)
-                    throw new Error("sprintf: ERROR: not enough arguments");
+                if (pAccessD) {
+                    access = parseInt(pAccessD, 10);
+                    if (access >= arguments.length)
+                        throw new Error("sprintf: ERROR: not enough arguments");
+                    subst = arguments[access];
+                }
+                else if (pAccessN) {
+                    if (typeof arguments[1] !== "object")
+                        throw new Error("sprintf: ERROR: invalid non-object arguments for named argument");
+                    subst = arguments[1][pAccessN];
+                    if (typeof subst === "undefined")
+                        throw new Error("sprintf: ERROR: invalid undefined value for named argument");
+                }
+                else {
+                    if (access >= arguments.length)
+                        throw new Error("sprintf: ERROR: not enough arguments");
+                    subst = arguments[access];
+                }
 
                 /*  dispatch into expansions according to type  */
                 var prefix = "";
                 switch (pType) {
                     case "d":
                     case "i":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(10);
@@ -128,26 +142,22 @@
                             subst = " " + subst;
                         break;
                     case "b":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(2);
                         break;
                     case "o":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(8);
                         break;
                     case "u":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = Math.abs(subst);
                         subst = subst.toString(10);
                         break;
                     case "x":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(16).toLowerCase();
@@ -155,7 +165,6 @@
                             prefix = "0x";
                         break;
                     case "X":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(16).toUpperCase();
@@ -164,7 +173,6 @@
                         break;
                     case "f":
                     case "F":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0.0;
                         subst = 0.0 + subst;
@@ -188,7 +196,6 @@
                         break;
                     case "e":
                     case "E":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0.0;
                         subst = 0.0 + subst;
@@ -203,18 +210,18 @@
                             subst = subst.replace(/e\+/, "E+");
                         break;
                     case "c":
-                        subst = arguments[access];
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = String.fromCharCode(subst);
                         break;
                     case "s":
-                        subst = arguments[access];
                         if (precision > -1)
                             subst = subst.substr(0, precision);
                         if (typeof subst !== "string")
                             subst = "";
                         break;
+                    default:
+                        throw new Error("sprintf: ERROR: invalid conversion character \"" + pType + "\"");
                 }
 
                 /*  apply optional padding  */
