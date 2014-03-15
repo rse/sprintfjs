@@ -69,7 +69,10 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
         /*  complex tests for various features  */
         [ "%s-%d-%.2f", [ "foo", 42, 7.1 ], "foo-42-7.10" ],
         [ "%2$s baz %3$s baz %1$s", [ "foo", "bar", "quux" ], "bar baz quux baz foo" ],
-        [ "%(bar)s baz %(quux)s baz %(foo)s", { foo: "foo", bar: "bar", quux: "quux" }, "bar baz quux baz foo" ]
+        [ "%(bar)s baz %(quux)s baz %(foo)s", { foo: "foo", bar: "bar", quux: "quux" }, "bar baz quux baz foo" ],
+
+        /*  special cases of embedded newlines  */
+        [ "%s\n%d", [ "foo", 42 ], "foo\n42" ]
     ];
 
     /*  the corresponding generic test driver  */
@@ -89,7 +92,7 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
                 else if (typeof args[j] === "string")
                     desc += "\"" + args[j] + "\"";
             }
-            desc = "sprintf(" + desc + ") -> \"" + test[2] + "\"";
+            desc = "sprintf(" + desc.replace(/\n/g, "\\n") + ") -> \"" + test[2].replace(/\n/g, "\\n") + "\"";
             it(desc, function () {
                 expect(sprintf.apply(undefined, args)).to.be.equal(test[2]);
             });
