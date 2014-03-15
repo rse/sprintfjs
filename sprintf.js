@@ -245,6 +245,9 @@
         return (done + todo);
     };
 
+    /*  brand with the version  */
+    sprintf.version = { text: "1.0.3", major: 1, minor: 0, micro: 3 };
+
     /*  export API  */
     return sprintf;
 
