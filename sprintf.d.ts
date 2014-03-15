@@ -24,5 +24,6 @@
 
 interface sprintf {
     (fmt: String, ...arg: any[]): String;
+    version: { text: String; major: Number; minor: Number; micro: Number; };
 }
 
