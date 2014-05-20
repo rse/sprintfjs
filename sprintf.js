@@ -38,7 +38,7 @@
         root[name] = factory(root);
 }(this, "sprintf", function (/* root */) {
 
-    /*  the Unix sprintf(3)-style function  */
+    /*  the POSIX sprintf(3)-style function  */
     var sprintf = function () {
         /*  argument sanity checking  */
         if (!arguments || arguments.length < 1)
@@ -131,6 +131,7 @@
                 /*  dispatch into expansions according to type  */
                 var prefix = "";
                 switch (pType) {
+                    /*  decimal number  */
                     case "d":
                     case "i":
                         if (typeof subst !== "number")
@@ -141,22 +142,30 @@
                         if (pFlags.indexOf(" ") >= 0 && subst >= 0)
                             subst = " " + subst;
                         break;
+
+                    /*  binary number  */
                     case "b":
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(2);
                         break;
+
+                    /*  octal number  */
                     case "o":
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = subst.toString(8);
                         break;
+
+                    /*  unsigned decimal number  */
                     case "u":
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = Math.abs(subst);
                         subst = subst.toString(10);
                         break;
+
+                    /*  (lower-case) hexadecimal number  */
                     case "x":
                         if (typeof subst !== "number")
                             subst = 0;
@@ -164,6 +173,8 @@
                         if (pFlags.indexOf("#") >= 0)
                             prefix = "0x";
                         break;
+
+                    /*  (upper-case) hexadecimal number  */
                     case "X":
                         if (typeof subst !== "number")
                             subst = 0;
@@ -171,6 +182,8 @@
                         if (pFlags.indexOf("#") >= 0)
                             prefix = "0X";
                         break;
+
+                    /*  (lower/upper-case) floating point number (fixed precision)  */
                     case "f":
                     case "F":
                         if (typeof subst !== "number")
@@ -194,6 +207,8 @@
                             }
                         }
                         break;
+
+                    /*  (lower/upper-case) floating point number (exponential-based precision)  */
                     case "e":
                     case "E":
                         if (typeof subst !== "number")
@@ -209,11 +224,15 @@
                         if (pType === "E")
                             subst = subst.replace(/e\+/, "E+");
                         break;
+
+                    /*  single character  */
                     case "c":
                         if (typeof subst !== "number")
                             subst = 0;
                         subst = String.fromCharCode(subst);
                         break;
+
+                    /*  string  */
                     case "s":
                         if (precision > -1)
                             subst = subst.substr(0, precision);
@@ -242,6 +261,8 @@
             done = done + pProlog + subst;
             todo = pEpilog;
         }
+
+        /*  return finally formatted string  */
         return (done + todo);
     };
 
