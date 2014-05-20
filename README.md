@@ -38,11 +38,21 @@ API
 ---
 
 The API is similar to POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii).
-It is exposed via AMD and CommonJS under the module name "sprintfjs"
+It is exposed via AMD and CommonJS under the module name "sprintf"
 and on the global `window` object in browser environments. The single
 exposed API method is (in TypeScript definition notation):
 
     sprintf(fmt: String, ...arg: any[]): String;
+
+It supports all standard POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
+features like `sprintf("%.2f", 12.3456)` &rarr; `12.34` and `sprintf("(%-6s)", "foo")` &rarr; `(foo   )` plus
+(in addition to the usual positional arguments) two special argument referencing features:
+
+- Indexed Arguments:<br/>
+  `sprintf("%2$s baz %3$s baz %1$s", "foo", "bar", "quux")` &rarr; `bar baz quux baz foo`
+
+- Named Arguments:<br/>
+  `sprintf("%(bar)s baz %(quux)s baz %(foo)s", { foo: "foo", bar: "bar", quux: "quux" })` &rarr; `bar baz quux baz foo`
 
 See Also
 --------
