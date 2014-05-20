@@ -45,7 +45,7 @@ exposed API method is (in TypeScript definition notation):
     sprintf(fmt: String, ...arg: any[]): String;
 
 It supports all standard POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
-features like `sprintf("%.2f", 12.3456)` &rarr; `12.34` and `sprintf("(%-6s)", "foo")` &rarr; `(foo   )` plus
+features like `sprintf("%.2f", 12.3456)` &rarr; `12.35` and `sprintf("(%-6s)", "foo")` &rarr; `(foo   )` plus
 (in addition to the usual positional arguments) two special argument referencing features:
 
 - Indexed Arguments:<br/>
