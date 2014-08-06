@@ -38,7 +38,7 @@ API
 ---
 
 The API is similar to POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii).
-It is exposed via AMD and CommonJS under the module name "sprintf"
+It is exposed via AMD and CommonJS under the module name `sprintf`
 and on the global `window` object in browser environments. The single
 exposed API method is (in TypeScript definition notation):
 
