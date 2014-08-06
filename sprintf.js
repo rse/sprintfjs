@@ -267,7 +267,7 @@
     };
 
     /*  brand with the version  */
-    sprintf.version = { text: "1.1.3", major: 1, minor: 1, micro: 3 };
+    sprintf.version = { text: "1.1.4", major: 1, minor: 1, micro: 4 };
 
     /*  export API  */
     return sprintf;
