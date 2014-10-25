@@ -14,7 +14,7 @@ Abstract
 --------
 
 This is a JavaScript implementation of POSIX sprintf(3)-style string formatting
-for use in [Node.js](http://nodejs.org/) based server and browser based client
+for use in [Node.js][http://nodejs.org/] based server and browser based client
 environments.
 
 Getting sprintf.js
@@ -37,14 +37,14 @@ You can conveniently get sprintf.js in various ways:
 API
 ---
 
-The API is similar to POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii).
+The API is similar to POSIX [sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/).
 It is exposed via AMD and CommonJS under the module name `sprintf`
 and on the global `window` object in browser environments. The single
 exposed API method is (in TypeScript definition notation):
 
     sprintf(fmt: String, ...arg: any[]): String;
 
-It supports all standard POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
+It supports all standard POSIX [sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/)
 features like `sprintf("%.2f", 12.3456)` &rarr; `12.35` and `sprintf("(%-6s)", "foo")` &rarr; `(foo   )` plus
 (in addition to the usual positional arguments) two special argument referencing features:
 
@@ -57,7 +57,7 @@ features like `sprintf("%.2f", 12.3456)` &rarr; `12.35` and `sprintf("(%-6s)", "
 See Also
 --------
 
-[sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
+[sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/)
 
 License
 -------
@@ -82,4 +82,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
