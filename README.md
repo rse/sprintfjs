@@ -37,14 +37,14 @@ You can conveniently get sprintf.js in various ways:
 API
 ---
 
-The API is similar to POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii).
+The API is similar to POSIX [sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/).
 It is exposed via AMD and CommonJS under the module name `sprintf`
 and on the global `window` object in browser environments. The single
 exposed API method is (in TypeScript definition notation):
 
     sprintf(fmt: String, ...arg: any[]): String;
 
-It supports all standard POSIX [sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
+It supports all standard POSIX [sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/)
 features like `sprintf("%.2f", 12.3456)` &rarr; `12.35` and `sprintf("(%-6s)", "foo")` &rarr; `(foo   )` plus
 (in addition to the usual positional arguments) two special argument referencing features:
 
@@ -57,7 +57,7 @@ features like `sprintf("%.2f", 12.3456)` &rarr; `12.35` and `sprintf("(%-6s)", "
 See Also
 --------
 
-[sprintf(3)](http://www.freebsd.org/cgi/man.cgi?query=sprintf&sektion=3&format=ascii)
+[sprintf(3)](http://www.unix.com/man-page/posix/3/fprintf/)
 
 License
 -------
