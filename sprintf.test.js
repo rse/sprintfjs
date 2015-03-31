@@ -45,7 +45,7 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
         [ "%03d",  42,   "042"  ],
         [ "%-3d",  42,   "42 "  ],
         [ "%-03d", 42,   "42 "  ],
-        [ "%d",    "xx", "0"    ],
+        [ "%d",    "xx", "0"    ], /* error case */
 
         /*  basic tests for %x  */
         [ "%x",    10,   "a"    ],
@@ -65,7 +65,7 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
         [ "%2s",  "test", "test"   ],
         [ "%6s",  "test", "  test" ],
         [ "%-6s", "test", "test  " ],
-        [ "%s",   42,     "42"     ],
+        [ "%s",   42,     "42"     ], /* error case */
 
         /*  complex tests for various features  */
         [ "%s-%d-%.2f", [ "foo", 42, 7.1 ], "foo-42-7.10" ],
