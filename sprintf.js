@@ -234,10 +234,10 @@
 
                     /*  string  */
                     case "s":
+                        if (typeof subst !== "string")
+                            subst = String(subst);
                         if (precision > -1)
                             subst = subst.substr(0, precision);
-                        if (typeof subst !== "string")
-                            subst = "";
                         break;
                     default:
                         throw new Error("sprintf: ERROR: invalid conversion character \"" + pType + "\"");
