@@ -29,8 +29,8 @@
 /* global expect: true */
 
 global.chai = require("chai");
+global.chai.config.includeStack = true;
 global.expect = global.chai.expect;
-global.chai.Assertion.includeStack = true;
 
 var sprintf = require("./sprintf.js");
 
@@ -65,6 +65,7 @@ describe("sprintf should be POSIX sprintf(3) compatible", function () {
         [ "%2s",  "test", "test"   ],
         [ "%6s",  "test", "  test" ],
         [ "%-6s", "test", "test  " ],
+        [ "%s",   42,     "42"     ],
 
         /*  complex tests for various features  */
         [ "%s-%d-%.2f", [ "foo", 42, 7.1 ], "foo-42-7.10" ],
