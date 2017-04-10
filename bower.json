@@ -1,6 +1,6 @@
 {
     "name": "sprintfjs",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "POSIX sprintf(3)-style String Formatting for JavaScript",
     "main": "sprintf.js",
     "homepage": "https://github.com/rse/sprintfjs",
