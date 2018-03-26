@@ -26,9 +26,9 @@ You can conveniently get sprintf.js in various ways:
 
   `$ git clone https://github.com/rse/sprintfjs.git`
 
-- Bower: install as client component via the Bower component manager:
+- NPM: install as client component via the NPM package manager:
 
-  `$ bower install sprintfjs`
+  `$ npm install sprintfjs`
 
 - cURL: downloading only the main file from the repository
 
