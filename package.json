@@ -2,7 +2,7 @@
     "name":        "sprintfjs",
     "homepage":    "http://github.com/rse/sprintfjs",
     "description": "POSIX sprintf(3)-style String Formatting for JavaScript",
-    "version":     "1.2.10",
+    "version":     "1.2.11",
     "license":     "MIT",
     "author": {
         "name":    "Ralf S. Engelschall",
