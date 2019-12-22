@@ -22,6 +22,7 @@
 **  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/* eslint no-redeclare: off */
 /* global require: true */
 /* global global: true */
 /* global describe: true */

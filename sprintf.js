@@ -26,7 +26,6 @@
 /*  Universal Module Definition (UMD)  */
 (function (root, name, factory) {
     /* global define: false */
-    /* global module: false */
     if (typeof define === "function" && typeof define.amd !== "undefined")
         /*  AMD environment  */
         define(name, function () { return factory(root); });
